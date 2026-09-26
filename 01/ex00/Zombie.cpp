@@ -15,14 +15,3 @@ void	Zombie::annonce( void )
 {
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
-
-Zombie* newZombie(std::string name)
-{
-	return new Zombie(name);
-}
-
-void	randomChump(std::string name)
-{
-	Zombie zombie(name);
-	zombie.annonce();
-}
