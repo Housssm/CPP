@@ -3,7 +3,8 @@ NAME    = replace
 CC      = c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 
-SRCS    =  main.cpp
+SRCS    =  replace_functions.cpp\
+			main.cpp
 
 OBJS    = $(SRCS:.cpp=.o)
 
