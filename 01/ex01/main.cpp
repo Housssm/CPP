@@ -2,7 +2,7 @@
 
 int main()
 {
-	Zombie* horde = zombieHorde(2147483645,"Foo");
+	Zombie* horde = zombieHorde(5,"Foo");
 
 	if (horde)
 	{

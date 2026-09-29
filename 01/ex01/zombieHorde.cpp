@@ -6,13 +6,11 @@ Zombie* zombieHorde( int N, std::string name )
 		return NULL;
 
 	Zombie*  horde = NULL;
-	try { new Zombie[N];}
+	try 
+	{horde = new Zombie[N];}
 	catch(const std::bad_alloc&)
-		{return NULL;}
-	if (!horde)
-		return NULL;
+	{return NULL;}
 	for (int i = 0; i <= N - 1; i++)
 		horde[i].SetName(name);
 	return horde;
-
 }
