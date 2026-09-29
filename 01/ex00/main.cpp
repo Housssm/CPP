@@ -2,7 +2,7 @@
 
 int main()
 {
-	randomChump("pierre");
+	randomChump("");
 	Zombie* Paul = newZombie("paul");
 
 	Paul->annonce();
