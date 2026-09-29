@@ -6,8 +6,6 @@
 
 int main()
 {
-	Weapon club = Weapon("crude spiked club");
-
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
@@ -31,6 +29,5 @@ int main()
 		unarmed.setWeapon(fist);
 		unarmed.attack();
 	}
-
 	return (0);
 }
