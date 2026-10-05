@@ -63,8 +63,8 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return *this;
 }
 
-//Arithmetic function
 
+//Arithmetic function
 Fixed Fixed::operator+(const Fixed &n) const
 {
 	return (this->toFloat() + n.toFloat());
@@ -74,7 +74,6 @@ Fixed Fixed::operator-(const Fixed &n) const
 {
 	return (this->toFloat() + n.toFloat());
 }
-
 
 Fixed Fixed::operator*(const Fixed &n) const
 {
@@ -134,6 +133,33 @@ bool	Fixed::operator!=(const Fixed &n)const
 	return (false);
 }
 
+// Incrementation/Decrementation operation
+
+Fixed& Fixed::operator++()
+{
+	this->_fixedPoint++;
+	return *this;
+}
+
+Fixed& Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	this->_fixedPoint++;
+	return temp;
+}
+
+Fixed& Fixed::operator--()
+{
+	this->_fixedPoint--;
+	return *this;
+}
+
+Fixed& Fixed::operator--(int)
+{
+	Fixed temp(*this);
+	this->_fixedPoint--;
+	return temp;
+}
 
 
 

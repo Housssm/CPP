@@ -10,11 +10,13 @@ class   Fixed
 		Fixed(const Fixed& other);
 		Fixed &operator=(const Fixed& other);
 		
+		//operation
 		Fixed operator+(const Fixed &n) const;
 		Fixed operator-(const Fixed &n) const;
 		Fixed operator*(const Fixed &n) const;
 		Fixed operator/(const Fixed &n) const;
 
+		//comparaison
 		bool	operator>(const Fixed &n)const;
 		bool	operator<(const Fixed &n)const;
 		bool	operator>=(const Fixed &n)const;
@@ -22,6 +24,11 @@ class   Fixed
 		bool	operator==(const Fixed &n)const;
 		bool	operator!=(const Fixed &n)const;
 		
+		//incre/decrementation
+		Fixed& operator++();
+		Fixed& Fixed::operator++(int);
+		Fixed& operator--();
+		Fixed& Fixed::operator--(int);
 
 		~Fixed();
 
