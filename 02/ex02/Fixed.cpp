@@ -63,16 +63,32 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return *this;
 }
 
-//Operastor function
+//Arithmetic function
 
-// Fixed& Fixed::operator+(const Fixed &n)
-// {
-// 	int result = _fixedPoint + n._fixedPoint;
-// 	return
-// }
-// Fixed::Fixed operator-(const Fixed &n);
-// Fixed::Fixed operator*(const Fixed &n);
-// Fixed::Fixed operator/(const Fixed &n);
+Fixed Fixed::operator+(const Fixed &n) const
+{
+	return (this->toFloat() + n.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed &n) const
+{
+	return (this->toFloat() + n.toFloat());
+}
+
+
+Fixed Fixed::operator*(const Fixed &n) const
+{
+	return (this->toFloat() * n.toFloat());
+}
+Fixed Fixed::operator/(const Fixed &n) const
+{
+	if (n.getRawBits() == 0)
+	{
+		std::cerr << "Error: division by zero" << std::endl;
+		return (Fixed(0));
+	}
+	return (this->toFloat() / n.toFloat());
+}
 
 
 //Comparaison functions
