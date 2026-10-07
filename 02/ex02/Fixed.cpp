@@ -141,7 +141,7 @@ Fixed& Fixed::operator++()
 	return *this;
 }
 
-Fixed& Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
 	Fixed temp(*this);
 	this->_fixedPoint++;
@@ -154,15 +154,12 @@ Fixed& Fixed::operator--()
 	return *this;
 }
 
-Fixed& Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
 	Fixed temp(*this);
 	this->_fixedPoint--;
 	return temp;
 }
-
-
-
 
 
 

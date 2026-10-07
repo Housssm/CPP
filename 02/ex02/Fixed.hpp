@@ -25,10 +25,10 @@ class   Fixed
 		bool	operator!=(const Fixed &n)const;
 		
 		//incre/decrementation
-		Fixed& operator++();
-		Fixed& Fixed::operator++(int);
-		Fixed& operator--();
-		Fixed& Fixed::operator--(int);
+		Fixed&	operator++();
+		Fixed	operator++(int);
+		Fixed&	operator--();
+		Fixed	operator--(int);
 
 		~Fixed();
 
