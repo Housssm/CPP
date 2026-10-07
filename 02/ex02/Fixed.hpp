@@ -30,6 +30,14 @@ class   Fixed
 		Fixed&	operator--();
 		Fixed	operator--(int);
 
+		// min/max
+		static Fixed&	min(Fixed& a, Fixed& b);
+		static Fixed&	max(Fixed& a, Fixed& b);
+
+		static const Fixed&	min(Fixed const & a, Fixed const & b);
+		static const Fixed&	max(Fixed const & a, Fixed const & b);
+
+
 		~Fixed();
 
 		int		getRawBits(void) const;
