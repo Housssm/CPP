@@ -13,16 +13,16 @@ class ClapTrap
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		void getHit();
-		void getEnergy();
-		void getAttack();
+		unsigned int getHit();
+		unsigned int getEnergy();
+		unsigned int getAttack();
 
 
 	private:
 
 		std::string		_name;
-		int				_hithPoint;//10
-		int				_energyPoint;//10
-		int				_attackPoint;//0
+		unsigned int				_hithPoint;//10
+		unsigned int				_energyPoint;//10
+		unsigned int				_attackPoint;//0
 		
 };
