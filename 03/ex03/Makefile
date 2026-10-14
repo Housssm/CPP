@@ -6,6 +6,7 @@ CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 SRCS	=	ClapTrap.cpp \
 			ScavTrap.cpp \
 			FragTrap.cpp \
+			DiamondTrap.cpp \
 			main.cpp
 
 OBJ_DIR = obj/
