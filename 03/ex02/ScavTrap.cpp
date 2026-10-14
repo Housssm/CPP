@@ -37,9 +37,9 @@ void	ScavTrap::attack(const std::string& target)
 {
 	if (this->_hithPoint == 0 || this->_energyPoint == 0)
 	{
-		std::cout << this->_name << " can't attack no HP or energy left!" << std::endl;
+		std::cout <<  "ScavTrap " << this->_name << " can't attack no HP or energy left!" << std::endl;
 		return ;
 	}	
 	this->_energyPoint -= 1;
-	std::cout << this->_name<< " attacks " << target << ", causing " << this->_attackPoint <<" points of damage!" << std::endl;
+	std::cout << "ScavTrap " << this->_name<< " attacks " << target << ", causing " << this->_attackPoint <<" points of damage!" << std::endl;
 }
