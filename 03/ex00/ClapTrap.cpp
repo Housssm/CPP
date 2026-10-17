@@ -7,7 +7,7 @@ ClapTrap::ClapTrap(const std::string name): _name(name)
 	_energyPoint = 10;
 	_attackPoint = 0;
 
-	std::cout << "le nom de lhumain est: " << _name <<" il a " << _hithPoint << " de pv, " << _energyPoint<< " denergie, " << _attackPoint << " de point dattack\n" << std::endl;
+	std::cout << "This robot's name is: " << _name <<" he got " << _hithPoint << " of HP, " << _energyPoint<< " of energy, " << _attackPoint << " of attack point\n" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -40,17 +40,20 @@ ClapTrap::~ClapTrap()
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_hithPoint - amount > 0)
+	if (_hithPoint >= amount)
 		this->_hithPoint -= amount;
 	else
-		this->_hithPoint -= 0;
-	std::cout <<  this->_name <<" took " << amount << " of dammage" << std::endl;
+		this->_hithPoint = 0;
+	std::cout <<  this->_name <<" took " << amount << " of damage" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string& target)
 {
 	if (this->_hithPoint == 0 || this->_energyPoint == 0)
+	{
+		std::cout << "Claptrap " << this->_name << " cannot attack: no hit points or energy points left!" << std::endl;
 		return ;
+	}
 	this->_energyPoint -= 1;
 	std::cout << this->_name<< " attacks " << target << ", causing " << this->_attackPoint <<" points of damage!" << std::endl;
 }
@@ -58,7 +61,10 @@ void	ClapTrap::attack(const std::string& target)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hithPoint == 0 || this->_energyPoint == 0)
+	{
+		std::cout << "Claptrap " << this->_name << " cannot attack: no hit points or energy points left!" << std::endl;
 		return ;
+	}
 	this->_hithPoint += amount;
 	this->_energyPoint -= 1;
 	std::cout << this->_name << " repaired himself, loosing 1pt of energy and gained " << amount << " pt of health" << std::endl;
