@@ -11,6 +11,7 @@ DiamondTrap::DiamondTrap(const std::string name): ClapTrap(name + "_clap_name"),
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other) : ClapTrap(other), ScavTrap(other), FragTrap(other), _name(other._name)
 {
+	*this = other;
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 }
 
@@ -29,7 +30,6 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap destructor called" << std::endl;
-
 }
 
 void DiamondTrap::whoAmI()

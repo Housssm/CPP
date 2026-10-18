@@ -12,7 +12,7 @@ FragTrap::FragTrap(const std::string name): ClapTrap(name)
 
 FragTrap::FragTrap(const FragTrap &other): ClapTrap(other)
 {
-	std::cout << "FragTrap " << _name << "copy constructor called" << std::endl;
+	std::cout << "FragTrap " << _name << " copy constructor called" << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &other)
@@ -33,4 +33,15 @@ FragTrap::~FragTrap()
 void	FragTrap::highFivesGuys()
 {
 	std::cout << "FragTrap " << this->_name << " joyfully requests: Give me a high five, guys!" << std::endl;
+}
+
+void	FragTrap::attack(const std::string& target)
+{
+	if (this->_hithPoint == 0 || this->_energyPoint == 0)
+	{
+		std::cout << this->_name << " can't attack no HP or energy left!" << std::endl;
+		return ;
+	}	
+	this->_energyPoint -= 1;
+	std::cout << this->_name<< " attacks " << target << ", causing " << this->_attackPoint <<" points of damage!" << std::endl;
 }
