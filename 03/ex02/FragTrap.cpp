@@ -19,7 +19,7 @@ FragTrap& FragTrap::operator=(const FragTrap &other)
 {
 	if (this != &other)
 	{
-		FragTrap::operator=(other);
+		ClapTrap::operator=(other);
 	}
 	std::cout << "FragTrap operator called" << std::endl;
 	return *this;
