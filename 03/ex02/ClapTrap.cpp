@@ -12,12 +12,8 @@ ClapTrap::ClapTrap(const std::string name): _name(name)
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
-	_name = other._name;
-	_hithPoint = 10;
-	_energyPoint = 10;
-	_attackPoint = 0;
-	
-	std::cout << "Copy constructor called" << std::endl;
+	*this = other;	
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
@@ -62,7 +58,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hithPoint == 0 || this->_energyPoint == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " cannot attack: no hit points or energy points left!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " cannot reapir itself: no hit points or energy points left!" << std::endl;
 		return ;
 	}
 	this->_hithPoint += amount;
