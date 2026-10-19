@@ -1,17 +1,16 @@
 #pragma once 
 #include "AMateria.hpp"
 
-class Ice :: AAMateria
+class Ice : public AMateria
 {
 	public:
 		Ice();
 		Ice(const Ice& other);
 		Ice& operator=(const Ice& other);
-		~Ice();
+		virtual ~Ice();
 
 		void use(ICharacter& target);
 		AMateria* clone() const;
 
 	private:
-		std::string _type;
 };

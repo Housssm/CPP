@@ -1,9 +1,8 @@
 #include "Ice.hpp"
 #include "ICharacter.hpp"
 
-Ice::Ice() : AMateria()
+Ice::Ice() : AMateria("cure")
 {
-	_type = "ice";
 	std::cout << "Ice constructor called" << std::endl;
 }
 
@@ -32,7 +31,7 @@ void Ice::use(ICharacter& target)
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
-AMateria* clone() const
+AMateria* Ice::clone() const
 {
 	return new Ice(*this);
 }
