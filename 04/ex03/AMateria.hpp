@@ -8,9 +8,9 @@ class AMateria
 	public:
 		AMateria();
 		AMateria(std::string const &type);
-		virtual ~AMateria();
 		AMateria(const AMateria& other);
 		AMateria& operator=(const AMateria& other);
+		virtual ~AMateria();
 
 		std::string const & getType() const;
 
@@ -20,4 +20,4 @@ class AMateria
 	protected:
 		std::string _type;
 
-}
+};
