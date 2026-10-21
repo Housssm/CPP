@@ -1,7 +1,7 @@
 #pragma once 
 #include <iostream>
 
-class MIMateriaSource
+class IMateriaSource
 {
 	public :
 		virtual ~IMateriaSource() {}

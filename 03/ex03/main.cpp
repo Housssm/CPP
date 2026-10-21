@@ -32,7 +32,6 @@ int main()
 	dt.beRepaired(10);
 	std::cout << "PV: " << dt.getHit() << ", energy: " << dt.getEnergy() << std::endl;
 
-	// Test forme canonique (affectation)
 	std::cout << "\n--- Test affectation DiamondTrap ---" << std::endl;
 	dt_copy = dt;
 	dt_copy.whoAmI();

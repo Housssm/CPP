@@ -3,10 +3,10 @@ NAME	= hayawen
 CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 
-SRCS	=	AAnimal.cpp \
-			Dog.cpp \
-			Cat.cpp \
-			Brain.cpp \
+SRCS	=	AMateria.cpp \
+			Cure.cpp \
+			Ice.cpp \
+			Character.cpp \
 			main.cpp
 
 OBJ_DIR = obj/
