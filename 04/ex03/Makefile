@@ -1,4 +1,4 @@
-NAME	= hayawen
+NAME	= Materia
 
 CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
@@ -7,6 +7,7 @@ SRCS	=	AMateria.cpp \
 			Cure.cpp \
 			Ice.cpp \
 			Character.cpp \
+			MateriaSource.cpp \
 			main.cpp
 
 OBJ_DIR = obj/

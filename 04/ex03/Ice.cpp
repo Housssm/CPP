@@ -1,7 +1,7 @@
 #include "Ice.hpp"
 #include "ICharacter.hpp"
 
-Ice::Ice() : AMateria("cure")
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Ice constructor called" << std::endl;
 }

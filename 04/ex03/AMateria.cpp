@@ -1,4 +1,3 @@
-#pragma once 
 #include "AMateria.hpp"
 
 AMateria::AMateria()
@@ -16,7 +15,7 @@ AMateria::~AMateria()
 	std::cout << "AMateria destructor called" << std::endl; 
 }
 
-AMateria::Materia(const AMateria& other): _type(other._type)
+AMateria::AMateria(const AMateria& other): _type(other._type)
 {
 	std::cout << "AMateria copy constructor called" << std::endl; 
 }
@@ -25,7 +24,7 @@ AMateria& AMateria::operator=(const AMateria& other)
 {
 	if (this != &other)
 	{
-		this->_type = other->_type;
+		this->_type = other._type;
 	}
 	return *this;
 }
