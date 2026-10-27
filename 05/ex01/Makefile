@@ -4,6 +4,7 @@ CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRCS	=	Bureaucrat.cpp \
+			Form.cpp \
 			main.cpp
 
 OBJ_DIR = obj/
