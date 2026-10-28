@@ -1,13 +1,13 @@
 #include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestAForm : public AForm
 {
-	private :
-		RobotomyRequestForm();
-		RobotomyRequestForm(const std::string& target);
-		RobotomyRequestForm(const RobotomyRequestForm& other);
-		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-		virtual ~RobotomyRequestForm();
+	public :
+		RobotomyRequestAForm();
+		RobotomyRequestAForm(const std::string& target);
+		RobotomyRequestAForm(const RobotomyRequestAForm& other);
+		RobotomyRequestAForm& operator=(const RobotomyRequestAForm& other);
+		virtual ~RobotomyRequestAForm();
 
 		virtual void		execute(Bureaucrat const& executor) const;
 	

@@ -1,49 +1,49 @@
 #include "AForm.hpp"
-#include "ShrubberyCreationForm"
-#include "Bureaucrat.cpp"
+#include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) , _target("Default")
+ShrubberyCreationAForm::ShrubberyCreationAForm() : AForm("ShrubberyCreationAForm", 145, 137) , _target("Default")
 {
-	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
+	std::cout << "ShrubberyCreationAForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm". 145, 137) , _target(target)
+ShrubberyCreationAForm::ShrubberyCreationAForm(const std::string& target) : AForm("ShrubberyCreationAForm", 145, 137) , _target(target)
 {
-	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
+	std::cout << "ShrubberyCreationAForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target)
+ShrubberyCreationAForm::ShrubberyCreationAForm(const ShrubberyCreationAForm& other) : AForm(other), _target(other._target)
 {
-	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
+	std::cout << "ShrubberyCreationAForm copy constructor called" << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+ShrubberyCreationAForm& ShrubberyCreationAForm::operator=(const ShrubberyCreationAForm& other)
 {
 	if (this != &other)
 	{
 		AForm::operator=(other);
 		this->_target = other._target;
 	}
-	std::cout << "ShrubberyCreationForm operator called" << std::endl;
+	std::cout << "ShrubberyCreationAForm operator called" << std::endl;
 	return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+ShrubberyCreationAForm::~ShrubberyCreationAForm()
 {
-	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
+	std::cout << "ShrubberyCreationAForm destructor called" << std::endl;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
+void	ShrubberyCreationAForm::execute(Bureaucrat const& executor) const
 {	
 	if (!this->getIsSigned())
-		throw AForm::FormNotSignedException();
+		throw AForm::AFormNotSignedException();
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 
 	std::string filename = this->_target + "_shrubbery";
 	std::ofstream outfile(filename.c_str());
-	i\f (!outfile.is_open())
+	if (!outfile.is_open())
 	{
 		std::cerr << "Error opening file " << filename << std::endl;
 		return;
@@ -52,7 +52,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 			<<		"/			\\\n"
 			<<		"|			|\n"
 			<<		"|			|\n"
-			<<		"\			/\n"
+			<<		"\\			/\n"
 			<<		 "-_________-\n"
 			<<		 	"|  |\n"
 			<<		 	"|  |\n"

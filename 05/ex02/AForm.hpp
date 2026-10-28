@@ -33,7 +33,7 @@ class AForm
 				virtual const char* what() const throw();
 		};
 
-		class FormNotSignedException : public std::exception
+		class AFormNotSignedException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw();
@@ -46,4 +46,4 @@ class AForm
 		const int			_gradeToExecute;
 };
 
-std::ostream& operator<<(std::ostream& out, const AForm& form);
+std::ostream& operator<<(std::ostream& out, const AForm& AForm);

@@ -3,7 +3,7 @@
 #include <string>
 #include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -17,10 +17,10 @@ class Bureaucrat
 
 		const std::string&	getName() const;
 		int					getGrade() const;
-		void				signForm(Form& form);
+		void				signAForm(AForm& AForm);
 		void				incrementGrade();
 		void				decrementGrade();
-		void				executeForm(AForm const& form);
+		void				executeAForm(AForm const& AForm);
 
 		class GradeTooHighException : public std::exception
 		{
