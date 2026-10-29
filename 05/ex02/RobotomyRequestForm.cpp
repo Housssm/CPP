@@ -3,38 +3,38 @@
 #include "AForm.hpp"
 #include <cstdlib>
 
-RobotomyRequestAForm::RobotomyRequestAForm() : AForm("RobotomyRequestAForm", 72, 45), _target("Default")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("Default")
 {
-	std::cout << "RobotomyRequestAForm constructor called" << std::endl;
+	std::cout << "RobotomyRequestForm constructor called" << std::endl;
 }
 
-RobotomyRequestAForm::RobotomyRequestAForm(const std::string& target) : AForm("RobotomyRequestAForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
-	std::cout << "RobotomyRequestAForm constructor called" << std::endl;
+	std::cout << "RobotomyRequestForm constructor called" << std::endl;
 }
 
-RobotomyRequestAForm::RobotomyRequestAForm(const RobotomyRequestAForm& other) : AForm(other), _target(other._target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), _target(other._target)
 {
-	std::cout << "RobotomyRequestAForm copy constructor called" << std::endl;
+	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
-RobotomyRequestAForm& RobotomyRequestAForm::operator=(const RobotomyRequestAForm& other)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
 	if (this != &other)
 	{
 		AForm::operator=(other);
 		this->_target = other._target;
 	}
-	std::cout << "RobotomyRequestAForm operator called" << std::endl;
+	std::cout << "RobotomyRequestForm operator called" << std::endl;
 	return *this;
 }
 
-RobotomyRequestAForm::~RobotomyRequestAForm()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << "RobotomyRequestAForm destructor called" << std::endl;
+	std::cout << "RobotomyRequestForm destructor called" << std::endl;
 }
 
-void RobotomyRequestAForm::execute(const Bureaucrat& executor) const
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (!this->getIsSigned())
 		throw AForm::AFormNotSignedException();

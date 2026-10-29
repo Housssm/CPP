@@ -3,65 +3,182 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 
-int main ()
+int main()
 {
-	Bureaucrat	bur3("Mahfoud", 50);
-	ShrubberyCreationAForm f1("Nicolas");
-	PresidentialPardonAForm f2("Pierre");
-	ShrubberyCreationAForm f3("Louis");
+    std::srand(std::time(NULL));
+
+
+    Bureaucrat intern("Stagiaire", 150);
+    Bureaucrat manager("Farid", 24);
+    Bureaucrat boss("Directeur", 1);
+
+    ShrubberyCreationForm shrub("jardin");
+    RobotomyRequestForm robot("Bender");
+    PresidentialPardonForm pardon("Arthur");
+
 	std::cout << std::endl;
-	
-
-
-	// try
-	// 	{AForm f4("Pierette", -2, 50);}
-	// catch (std::exception &e)
-	// 	{std::cerr << "Exception attrapée : " << e.what() << std::endl;}
-	// try
-	// 	{AForm f6("Pierette", 180, 50);}
-	// catch (std::exception &e)
-	// 	{std::cerr << "Exception attrapée : " << e.what() << std::endl;}
-	// try
-	// 	{AForm f4("Pierette", 2, -90);}
-	// catch (std::exception &e)
-	// 	{std::cerr << "Exception attrapée : " << e.what() << std::endl;}
-	// try
-	// 	{AForm f6("Pierette", 10, 1850);}
-	// catch (std::exception &e)
-	// 	{std::cerr << "Exception attrapée : " << e.what() << std::endl;}
-	// std::cout << std::endl;
-
-	std::cout << bur3 << std::endl;
-	std::cout << f1 << std::endl;
-	std::cout << f2 << std::endl;
-	std::cout << f3 << std::endl;
 	std::cout << std::endl;
 
-	// try
-	// 	{bur3.signAForm(f1);}
-	// catch (std::exception& e)
-	// 	{std::cerr << e.what() << std::endl;}
-	// std::cout << std::endl;
+    std::cout << intern << std::endl;
+    std::cout << manager << std::endl;
+    std::cout << boss << std::endl;
+    std::cout << shrub << std::endl;
+    std::cout << robot << std::endl;
+    std::cout << pardon << std::endl;
+    std::cout << std::endl;
 
-	// try
-	// 	{bur3.signAForm(f2);}
-	// catch (std::exception& e)
-	// 	{std::cerr << e.what() << std::endl;}
-	// std::cout << std::endl;
+    std::cout << "-------------------------------" << std::endl;
+    std::cout << "--- TEST 1 : FORM PAS SIGNE ---" << std::endl;
+    std::cout << "-------------------------------" << std::endl;
+    try
+    {
+        boss.executeAForm(shrub);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
 
-	// try
-	// 	{f3.beSigned(bur3);}
-	// catch (std::exception& e)
-	// 	{std::cerr << e.what() << std::endl;}
-	// std::cout << std::endl;
+    try
+    {
+        pardon.execute(boss);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << "Attrape en direct : " << e.what() << std::endl;
+    }
+    std::cout << std::endl;
 
 
-	// std::cout << f1 << std::endl;
-	// std::cout << f2 << std::endl;
-	// std::cout << f3 << std::endl;
-	// std::cout << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
+    std::cout << "---TEST 2 : SIGNATURES PAR DIFFERENTS GRADES ---" << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
 
-	return 0;
+    try
+    {
+        intern.signForm(shrub);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        manager.signForm(shrub);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        manager.signForm(robot);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        manager.signForm(pardon);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+
+
+	std::cout << "-------------------------" << std::endl;
+    std::cout << "--- FORMULAIRES SIGNES---" << std::endl;    
+	std::cout << "-------------------------" << std::endl;
+
+    std::cout << shrub << std::endl;
+    std::cout << robot << std::endl;
+    std::cout << pardon << std::endl;
+    std::cout << std::endl;
+
+
+    std::cout << "------------------------------------------------" << std::endl;
+    std::cout << "--- TEST 3 : EXECUTION PAR UN GRADE TROP BAS ---" << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
+
+    try
+    {
+        manager.executeAForm(pardon);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        pardon.execute(manager);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << "Error message : " << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+
+
+    std::cout << "-----------------------------------------------" << std::endl;
+    std::cout << "--- TEST 4 : EXECUTIONS VALIDES PAR LE BOSS ---" << std::endl;
+    std::cout << "-----------------------------------------------" << std::endl;
+
+    try
+    {
+        boss.executeAForm(shrub);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        boss.executeAForm(robot);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+	try
+    {
+        boss.executeAForm(robot);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+	try
+    {
+        boss.executeAForm(robot);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        boss.executeAForm(pardon);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    std::cout << std::endl;    
+
+    return 0;
 }

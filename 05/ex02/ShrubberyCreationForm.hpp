@@ -1,13 +1,13 @@
 #include "AForm.hpp"
 
-class ShrubberyCreationAForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
 	public :
-		ShrubberyCreationAForm();
-		ShrubberyCreationAForm(const std::string& target);
-		ShrubberyCreationAForm(const ShrubberyCreationAForm& other);
-		ShrubberyCreationAForm& operator=(const ShrubberyCreationAForm& other);
-		virtual ~ShrubberyCreationAForm();
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(const std::string& target);
+		ShrubberyCreationForm(const ShrubberyCreationForm& other);
+		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+		virtual ~ShrubberyCreationForm();
 
 		virtual void		execute(Bureaucrat const& executor) const;
 	

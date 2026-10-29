@@ -1,13 +1,13 @@
 #include "AForm.hpp"
 
-class PresidentialPardonAForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	public :
-		PresidentialPardonAForm();
-		PresidentialPardonAForm(const std::string& target);
-		PresidentialPardonAForm(const PresidentialPardonAForm& other);
-		PresidentialPardonAForm& operator=(const PresidentialPardonAForm& other);
-		virtual ~PresidentialPardonAForm();
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& other);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
+		virtual ~PresidentialPardonForm();
 
 		virtual void		execute(Bureaucrat const& executor) const;
 	

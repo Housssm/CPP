@@ -3,38 +3,38 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationAForm::ShrubberyCreationAForm() : AForm("ShrubberyCreationAForm", 145, 137) , _target("Default")
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) , _target("Default")
 {
-	std::cout << "ShrubberyCreationAForm constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationAForm::ShrubberyCreationAForm(const std::string& target) : AForm("ShrubberyCreationAForm", 145, 137) , _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137) , _target(target)
 {
-	std::cout << "ShrubberyCreationAForm constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationAForm::ShrubberyCreationAForm(const ShrubberyCreationAForm& other) : AForm(other), _target(other._target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target)
 {
-	std::cout << "ShrubberyCreationAForm copy constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
-ShrubberyCreationAForm& ShrubberyCreationAForm::operator=(const ShrubberyCreationAForm& other)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
 	if (this != &other)
 	{
 		AForm::operator=(other);
 		this->_target = other._target;
 	}
-	std::cout << "ShrubberyCreationAForm operator called" << std::endl;
+	std::cout << "ShrubberyCreationForm operator called" << std::endl;
 	return *this;
 }
 
-ShrubberyCreationAForm::~ShrubberyCreationAForm()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationAForm destructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-void	ShrubberyCreationAForm::execute(Bureaucrat const& executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {	
 	if (!this->getIsSigned())
 		throw AForm::AFormNotSignedException();
@@ -48,16 +48,16 @@ void	ShrubberyCreationAForm::execute(Bureaucrat const& executor) const
 		std::cerr << "Error opening file " << filename << std::endl;
 		return;
 	}
-	outfile <<		 "___________\n"
-			<<		"/			\\\n"
-			<<		"|			|\n"
-			<<		"|			|\n"
-			<<		"\\			/\n"
-			<<		 "-_________-\n"
-			<<		 	"|  |\n"
-			<<		 	"|  |\n"
-			<<		 	"|  |\n"
-			<<		    "/  \\\n";
+	outfile <<		 "___________ \n"
+			<<		"/           \\ \n"
+			<<		"|           | \n"
+			<<		"|           | \n"
+			<<		"\\          / \n"
+			<<		 "-_________- \n"
+			<<		 " 		|  | \n"
+			<<		 " 		|  | \n"
+			<<		 " 		|  | \n"
+			<<		 " 		/  \\ \n";
 	outfile.close();
 }
 
