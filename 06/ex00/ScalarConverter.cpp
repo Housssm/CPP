@@ -33,44 +33,44 @@ void ScalarConverter::convert(const std::string& input)
 			return ;
 		}
 		dbl_result = static_cast<double>(input[0]);
-		ptr[0] = '\0';
+		ptr = const_cast<char*>("");
 	}
 	else
+	{
 		dbl_result = strtod(input.c_str(), &ptr);
-
-	// String verification 
-	if (ptr == input.c_str() || (*ptr != '\0' &&  !(ptr[0] == 'f' && ptr[1] == '\0')))
-	{
-		std::cerr << "Invalid argument" << std::endl;
-		return ;
+		if (ptr == input.c_str() || (*ptr != '\0' &&  !(ptr[0] == 'f' && ptr[1] == '\0')))
+		{
+			std::cerr << "Invalid argument" << std::endl;
+			return ;
+		}
 	}
+
+	bool is_special = std::isnan(dbl_result) || std::isinf(dbl_result);
+
+	// CHAR
+	std::cout << "char : ";
+	if (is_special||  dbl_result < 0 || dbl_result > 127)
+		std::cout << "impossible" << std::endl;
+	else if (!std::isprint(static_cast<int>(dbl_result)))
+		std::cout << "Non displayable" << std::endl; 
+	else
+		std::cout << "'" << static_cast<char>(dbl_result) << "'" << std::endl;
 	
-	//Limits verifications
-	if ( dbl_result != dbl_result || dbl_result < std::numeric_limits<int>::min() || dbl_result > std::numeric_limits<int>::max())
-	{
-		std::cout << "char : impossible" << std::endl; 
-		std::cout << "int : impossible" << std::endl; 
-	}
+	// INT
+	std::cout << "int : ";
+	if (is_special|| dbl_result < std::numeric_limits<int>::min() || dbl_result > std::numeric_limits<int>::max())
+		std::cout << "impossible" << std::endl;
 	else
-	{
-		char char_result = static_cast<char>(dbl_result);
-		if (char_result < 32 || char_result == 127)
-			std::cout << "char : Non displayable" << std::endl; 
-		else
-			std::cout << "char : '" << char_result << "'" << std::endl; 
-		int int_result = static_cast<int>(dbl_result);
-		std::cout << "int : " << int_result << std::endl; 
-	}
+		std::cout << static_cast<int>(dbl_result) << std::endl;
 
-	if (dbl_result < std::numeric_limits<float>::min() || dbl_result > std::numeric_limits<float>::max())	
-		std::cout << "float : impossible" << std::endl;
+	//FLOAT
+	std::cout << "float : ";
+	if (!is_special && (dbl_result < -std::numeric_limits<float>::max() || dbl_result > std::numeric_limits<float>::max()))
+		std::cout << "impossible" << std::endl;
 	else
-	{
-		float flt_result = static_cast<float>(dbl_result);
-		std::cout << "float : " << std::fixed << std::setprecision(1) << flt_result << "f" << std::endl; 
-	}
-	if (dbl_result < std::numeric_limits<double>::min() || dbl_result > std::numeric_limits<double>::max())	
-		std::cout << "double : impossible" << std::endl;
-	else
-		std::cout << "double : " << std::fixed << std::setprecision(1) << dbl_result << std::endl; 
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(dbl_result) << "f" << std::endl; 
+
+	//DOUBLE
+	std::cout << "double : ";
+	std::cout << std::fixed << std::setprecision(1) << dbl_result << std::endl; 
 }
