@@ -3,7 +3,7 @@
 
 #include <string>
 #include <cmath>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <iomanip>
