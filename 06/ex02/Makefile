@@ -1,4 +1,4 @@
-NAME	= convert
+NAME	= identify
 
 CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
