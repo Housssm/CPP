@@ -61,12 +61,12 @@ std::ostream& operator<<(std::ostream& out, const Form& form)
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-	return "Grade is to high" ;
+	return "Grade is too high" ;
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-	return "Grade is to low";
+	return "Grade is too low";
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat)

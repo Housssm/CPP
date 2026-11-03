@@ -8,6 +8,7 @@ SRCS	=	Bureaucrat.cpp \
 			ShrubberyCreationForm.cpp \
 			PresidentialPardonForm.cpp \
 			RobotomyRequestForm.cpp \
+			Intern.cpp \
 			main.cpp
 
 OBJ_DIR = obj/

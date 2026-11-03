@@ -36,7 +36,7 @@ int main()
     std::cout << "-------------------------------" << std::endl;
     try
     {
-        boss.executeAForm(shrub);
+        boss.executeForm(shrub);
     }
     catch (std::exception& e)
     {
@@ -112,7 +112,7 @@ int main()
 
     try
     {
-        manager.executeAForm(pardon);
+        manager.executeForm(pardon);
     }
     catch (std::exception& e)
     {
@@ -136,7 +136,7 @@ int main()
 
     try
     {
-        boss.executeAForm(shrub);
+        boss.executeForm(shrub);
     }
     catch (std::exception& e)
     {
@@ -145,7 +145,7 @@ int main()
 
     try
     {
-        boss.executeAForm(robot);
+        boss.executeForm(robot);
     }
     catch (std::exception& e)
     {
@@ -154,7 +154,7 @@ int main()
 
 	try
     {
-        boss.executeAForm(robot);
+        boss.executeForm(robot);
     }
     catch (std::exception& e)
     {
@@ -163,7 +163,7 @@ int main()
 
 	try
     {
-        boss.executeAForm(robot);
+        boss.executeForm(robot);
     }
     catch (std::exception& e)
     {
@@ -172,7 +172,7 @@ int main()
 
     try
     {
-        boss.executeAForm(pardon);
+        boss.executeForm(pardon);
     }
     catch (std::exception& e)
     {
