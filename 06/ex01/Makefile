@@ -1,10 +1,9 @@
-NAME	= convert
+NAME	= serialize
 
 CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 
-SRCS	=	ScalarConverter.cpp \
-			Serializer.cpp \
+SRCS	=	Serializer.cpp \
 			main.cpp
 
 OBJ_DIR = obj/

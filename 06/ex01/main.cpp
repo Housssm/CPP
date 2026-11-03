@@ -1,5 +1,3 @@
-
-#include "ScalarConverter.hpp"
 #include "Serializer.hpp"
 
 int main()
