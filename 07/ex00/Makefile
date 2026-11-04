@@ -3,8 +3,7 @@ NAME	= whatever
 CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 
-SRCS	=	Iter.cpp \
-			main.cpp
+SRCS	=	main.cpp \
 
 OBJ_DIR = obj/
 OBJS	= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
