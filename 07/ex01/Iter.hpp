@@ -1,4 +1,5 @@
-#pragma once 
+#ifndef ITER_HPP
+#define ITER_HPP
 #include <iostream>
 #include <cstddef>
 
@@ -10,3 +11,5 @@ void iter(T *array, const size_t arrayLen, F f)
 	for ( size_t i = 0; i < arrayLen; i++)
 		f(array[i]);
 }
+
+#endif
