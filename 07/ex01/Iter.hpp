@@ -1,12 +1,12 @@
+#pragma once 
 #include <iostream>
+#include <cstddef>
 
-class Iter
+template <typename T, typename F> 
+void iter(T *array, const size_t arrayLen, F f)
 {
-	public:
-		Iter();
-		Iter(const Iter& other);
-		Iter7 operator=(const Iter& other);
-		~Iter();
-
-		iter(int array*, const int array_length, f*);
-};
+	if (!array || !f)
+		return;
+	for ( size_t i = 0; i < arrayLen; i++)
+		f(array[i]);
+}
