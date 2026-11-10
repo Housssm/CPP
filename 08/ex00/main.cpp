@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <list>
 
 
 int main ()
@@ -48,5 +49,20 @@ int main ()
 		std::cout << ex.what() << std::endl;
 	}
 
+	std::cout << "-------TEST WITH LIST-----------"<< std::endl;
+	static const int l[] = {7, 5, 16, 8};
+	std::list<int> liste (l, l + sizeof(l) / sizeof(l[0]) );
+
+	std::cout << "Value found is : "<<*easyfind(liste, 8)<< std::endl;
+		
+	try
+	{
+		std::cout << "Value found is : " << *easyfind(liste, 20) << std::endl;
+	}
+	catch(const std::exception& ex)
+	{
+		std::cout << ex.what() << std::endl;
+	}
+	
 	return 0;
 }
