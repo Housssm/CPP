@@ -12,9 +12,13 @@ class Span
 		Span& operator=(const Span& other);
 		~Span();
 
-		void				addNumber(const int N);
+		template <typename inputOperator>
+		void				addNumber(inputOperator begin, inputOperator end);
+
 		unsigned int		shortestSpan() const;
-		unsigned int		 longestSpan() const;
+		unsigned int		longestSpan() const;
+		
+		
 
 		class noSpan : public std::exception
 		{
