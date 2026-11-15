@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <algorithm>
 
 Span::Span() : _N(0)
 {
@@ -33,22 +34,45 @@ Span::~Span()
 	std::cout << "Span destructor called" << std::endl;
 }
 
-		template <typename inputOperator>
-		void				addNumber(inputOperator begin, inputOperator end);
+void Span::addNumber(const int N)
+{
+	if (_vec.size() + 1 > _N)
+		throw noMoreSpace();
+	_vec.insert(_vec.end(), N);
+}
 
-		unsigned int		shortestSpan() const;
-		unsigned int		longestSpan() const;
-		
-		
+unsigned int		Span::shortestSpan() const
+{
+	if (_vec.size() < 2)
+		throw noSpan();
+	std::sort(_vec.begin(), _vec.end());
+	unsigned int diff = _vec[1] - _vec[0];
+	for (size_t i = 1; i < _vec.size(); i++)
+	{
+		if (static_cast<long>(_vec[i]) - _vec[i - 1] < static_cast<int>(diff))
+			diff =_vec[i] - _vec[i - 1];
+	}
+	return diff;
+}
 
-		class noSpan : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
+unsigned int		Span::longestSpan() const
+{
+	if (_vec.size() < 2)
+		throw noSpan();
+	std::sort(_vec.begin(), _vec.end());
+	return _vec.max() - _vec.min();
+}
 
-		class	noMoreSpace : public std::exception
-		{
-			public :
-				virtual const char* what() const throw();
-		};
+
+
+class noSpan : public std::exception
+{
+	public:
+		virtual const char* what() const throw();
+};
+
+class	noMoreSpace : public std::exception
+{
+	public :
+		virtual const char* what() const throw();
+};
