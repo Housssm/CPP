@@ -1,18 +1,34 @@
 #include "Span.hpp"
 
-Span()
+Span::Span() : _N(0)
 {
 	std::cout << "Span constructor called" << std::endl;
 }
 
-Span(const unsigned int N)
+Span::Span(const unsigned int N) : _N(N)
 {
-		new
 	std::cout << "Span constructor called" << std::endl;
 }
-Span(const Span& other);
-Span& operator=(const Span& other);
-~Span()
+
+Span::Span(const Span& other)
+{
+	_N = other._N;
+	_vec = other._vec;
+	std::cout << "Span copy constructor called" << std::endl;
+}
+
+Span& Span::operator=(const Span& other)
+{
+	if (this != &other)
+	{
+		_N = other._N;
+		_vec = other._vec;
+	}
+	std::cout << "Span operator called" << std::endl;
+	return *this;
+}
+
+Span::~Span()
 {
 	std::cout << "Span destructor called" << std::endl;
 }
