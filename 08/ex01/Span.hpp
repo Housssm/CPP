@@ -2,6 +2,7 @@
 #include <iostream>
 #include <exception>
 #include <vector>
+#include <iterator>
 
 class Span
 {
@@ -12,9 +13,15 @@ class Span
 		Span& operator=(const Span& other);
 		~Span();
 
-		template <typename inputOperator>
-		void				addNumber(inputOperator begin, inputOperator end);
+		template <typename inputIterator>
+		void				addNumber(inputIterator begin, inputIterator end)
+		{
+			if (_vec.size() + std::distance(begin, end) > _N)
+				throw noMoreSpace();
+			_vec.insert(_vec.end(), begin, end);
+		}
 
+		void				addNumber(const int N);
 		unsigned int		shortestSpan() const;
 		unsigned int		longestSpan() const;
 		
@@ -31,4 +38,8 @@ class Span
 			public :
 				virtual const char* what() const throw();
 		};
+		
+		private:
+			unsigned int		_N;
+			std::vector<int>	_vec;
 };
