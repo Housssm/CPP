@@ -3,12 +3,12 @@
 
 Span::Span() : _N(0)
 {
-	std::cout << "Span constructor called" << std::endl;
+	// std::cout << "Span constructor called" << std::endl;
 }
 
 Span::Span(const unsigned int N) : _N(N)
 {
-	std::cout << "Span constructor called" << std::endl;
+	// std::cout << "Span constructor called" << std::endl;
 }
 
 Span::Span(const Span& other)
@@ -31,7 +31,7 @@ Span& Span::operator=(const Span& other)
 
 Span::~Span()
 {
-	std::cout << "Span destructor called" << std::endl;
+	// std::cout << "Span destructor called" << std::endl;
 }
 
 void Span::addNumber(const int N)
