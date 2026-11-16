@@ -70,15 +70,12 @@ unsigned int		Span::longestSpan() const
 	return static_cast<unsigned int>(static_cast<long>(maxVal) - static_cast<long>(minVal));
 }
 
-
-class noSpan : public std::exception
+const char *Span::noSpan::what() const throw()
 {
-	public:
-		virtual const char* what() const throw();
-};
+	return "No span can be found";
+}
 
-class	noMoreSpace : public std::exception
+const char *Span::noMoreSpace::what() const throw()
 {
-	public :
-		virtual const char* what() const throw();
-};
+	return "No more space";
+}
