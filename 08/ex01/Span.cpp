@@ -45,12 +45,17 @@ unsigned int		Span::shortestSpan() const
 {
 	if (_vec.size() < 2)
 		throw noSpan();
-	std::sort(_vec.begin(), _vec.end());
-	unsigned int diff = _vec[1] - _vec[0];
-	for (size_t i = 1; i < _vec.size(); i++)
+	std::vector<int> sorted(_vec);
+	std::sort(sorted.begin(), sorted.end());
+
+	unsigned int diff = static_cast<unsigned int>(static_cast<long>(sorted[1]) - static_cast<long>(sorted[0]));
+
+	for (size_t i = 2; i < sorted.size(); i++)
 	{
-		if (static_cast<long>(_vec[i]) - _vec[i - 1] < static_cast<int>(diff))
-			diff =_vec[i] - _vec[i - 1];
+		unsigned int curr_diff = static_cast<unsigned int>(static_cast<long>(sorted[i]) - static_cast<long>(sorted[i - 1]));
+
+		if (curr_diff < diff)
+			diff = curr_diff;
 	}
 	return diff;
 }
@@ -59,10 +64,11 @@ unsigned int		Span::longestSpan() const
 {
 	if (_vec.size() < 2)
 		throw noSpan();
-	std::sort(_vec.begin(), _vec.end());
-	return _vec.max() - _vec.min();
+	
+	int minVal = *std::min_element(_vec.begin(), _vec.end());
+	int maxVal = *std::max_element(_vec.begin(), _vec.end());
+	return static_cast<unsigned int>(static_cast<long>(maxVal) - static_cast<long>(minVal));
 }
-
 
 
 class noSpan : public std::exception
