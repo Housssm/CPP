@@ -1,5 +1,4 @@
 #include "MutantStack.hpp"
-#include "MutantStack.tpp"
 #include <list>
 
 int main()

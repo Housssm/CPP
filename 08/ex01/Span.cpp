@@ -11,11 +11,9 @@ Span::Span(const unsigned int N) : _N(N)
 	// std::cout << "Span constructor called" << std::endl;
 }
 
-Span::Span(const Span& other)
+Span::Span(const Span& other) : _N(other._N), _vec(other._vec)
 {
-	_N = other._N;
-	_vec = other._vec;
-	std::cout << "Span copy constructor called" << std::endl;
+	// std::cout << "Span copy constructor called" << std::endl;
 }
 
 Span& Span::operator=(const Span& other)
@@ -25,7 +23,7 @@ Span& Span::operator=(const Span& other)
 		_N = other._N;
 		_vec = other._vec;
 	}
-	std::cout << "Span operator called" << std::endl;
+	// std::cout << "Span operator called" << std::endl;
 	return *this;
 }
 
@@ -41,7 +39,7 @@ void Span::addNumber(const int N)
 	_vec.insert(_vec.end(), N);
 }
 
-unsigned int		Span::shortestSpan() const
+unsigned int	Span::shortestSpan() const
 {
 	if (_vec.size() < 2)
 		throw noSpan();
@@ -60,7 +58,7 @@ unsigned int		Span::shortestSpan() const
 	return diff;
 }
 
-unsigned int		Span::longestSpan() const
+unsigned int	Span::longestSpan() const
 {
 	if (_vec.size() < 2)
 		throw noSpan();

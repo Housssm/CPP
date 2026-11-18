@@ -25,4 +25,16 @@ typename T::const_iterator	easyfind(const T &array,const int toFind)
 
 }
 
+
+template <typename T>
+typename T::iterator	easyfind(T &array,const int toFind)
+{
+
+	typename T::iterator it = std::find(array.begin(), array.end(), toFind);
+	if (it != array.end())
+		return it;
+	else
+		throw NotPresentIndex();
+}
+
 #endif
