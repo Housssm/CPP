@@ -4,25 +4,17 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-	try
-	{
-		loadDatabase(data.csv)
-	}
-	throw
-	{
-
-	}
+	this->loadDatabase("data.csv");
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _data(other._data)
 {
-	_data = other._data;
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 {
-	if (!this != &other)
-		_data = other.data;
+	if (this != &other)
+		_data = other._data;
 	return *this;
 }
 
@@ -72,7 +64,6 @@ void	BitcoinExchange::loadDatabase(const std::string& dbPath)
 
 bool	BitcoinExchange::isValidDate(const std::string& date) const
 {
-	if 
 }
 bool	BitcoinExchange::isValidValue(const std::string& valueStr, double& value) const;
 double	BitcoinExchange::getEchangeRate(const std::string& date) const;
