@@ -3,7 +3,7 @@ NAME	= btc
 CC	= c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
 
-SRCS	=	Span.cpp \
+SRCS	=	BitcoinExchange.cpp \
 			main.cpp
 
 OBJ_DIR = obj/

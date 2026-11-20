@@ -1,7 +1,9 @@
 #include "BitcoinExchange.hpp"
+#include <iostream>
 #include <fstream>
-#include <exception>
-#include <string>
+#include <sstream>
+#include <cctype>
+#include <cstdlib>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -23,9 +25,54 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
+
+std::string BitcoinExchange::trim(const std::string& str) const
+{
+	std::string::size_type first = str.find_first_not_of(" \t\r\n");
+	if (first == std::string::npos)
+		return "";
+	std::string::size_type last = str.find_last_not_of(" \t\r\n");
+	return str.substr(first, last - first + 1);
+}
+
 void	BitcoinExchange::processInputFile(const std::string& filename) const
 {
+	std::ifstream input(filename.c_str());
+	if (!input.is_open())
+		{throw std::runtime_error("Error: could not  open file.");}
 
+	std::string line;
+	if (!std::getline(input, line))
+		{throw std::runtime_error("Error: file is empty.");}
+
+	while(std::getline(input, line))
+	{
+		if (trim(line).empty())
+			continue;
+	
+		std::string::size_type location = line.find('|');
+		if (location == std::string::npos)
+		{
+			std::cout << "Error : bad input => " <<  line << std::endl;
+			continue;
+		}
+
+		std::string dateStr = trim(line.substr(0, location));
+		std::string valueStr = trim(line.substr(location + 1));
+		if (!isValidDate(dateStr))
+		{
+			std::cout << "Error : bad input => " + dateStr << std::endl;
+			continue;
+		}
+		double convertedValue = 0.0;
+		if (!isValidValue(valueStr, convertedValue))
+			continue;
+		
+		double btcValue = getExchangeRate(dateStr);
+		if (btcValue < 0.0)
+			continue;
+		std::cout << dateStr + " => "<< convertedValue << " = " << (btcValue * convertedValue) << std::endl;
+	}
 }
 
 void	BitcoinExchange::loadDatabase(const std::string& dbPath)
@@ -48,12 +95,14 @@ void	BitcoinExchange::loadDatabase(const std::string& dbPath)
 			throw std::runtime_error("Error: invalid format in database.");
 
 		std::string dateStr = line.substr(0, location);
-		std::string rateStr = line.substr(location + 1);
+		std::string valueStr = line.substr(location + 1);
 		if (!isValidDate(dateStr))
 			throw std::runtime_error("Error : bad input => " + dateStr);
 
-		std::istringstream iss(rateStr);
+		std::istringstream iss(valueStr);
 		double convertedValue = 0.0;
+
+		
 		if (!(iss >> convertedValue) || !iss.eof() || convertedValue < 0.0)
 			throw std::runtime_error("Error : bad input => " + dateStr);
 		_data.insert(std::make_pair(dateStr, convertedValue));
@@ -93,6 +142,44 @@ bool	BitcoinExchange::isValidDate(const std::string& date) const
 		return true;
 }
 
+bool	BitcoinExchange::isValidValue(const std::string& valueStr, double& convertedValue) const
+{
+	if (valueStr.empty())
+	{
+		std::cout << "Error : bad input => " + valueStr << std::endl;
+		return false;
+	}
+	std::istringstream iss(valueStr);
+	if (!(iss >> convertedValue) || !iss.eof())
+	{
+		std::cout << "Error : bad input => " + valueStr << std::endl;
+		return false;
+	}
+	else if (convertedValue < 0.0)
+	{
+		std::cout << "Error : not a positive number." <<std::endl;
+		return false;
+	}
+	else if (convertedValue > 1000)
+	{
+		std::cout << "Error : too large a number." <<std::endl;
+		return false;
+	}
+	return true;
+}
 
-bool	BitcoinExchange::isValidValue(const std::string& valueStr, double& value) const;
-double	BitcoinExchange::getEchangeRate(const std::string& date) const;
+double	BitcoinExchange::getExchangeRate(const std::string& date) const
+{
+	double btcValue = -1.0;
+	std::map<std::string, double>::const_iterator itlow = _data.lower_bound(date);
+	if (itlow != _data.end() && itlow->first == date)
+		btcValue = itlow->second;
+	else if(itlow != _data.begin())
+	{
+		--itlow;
+		btcValue = itlow->second;
+	}
+	else
+		std::cout << "Error : on data for => " << date << std::endl;
+	return btcValue;
+}

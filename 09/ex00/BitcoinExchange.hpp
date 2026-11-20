@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <map>
+
 
 class BitcoinExchange
 {
@@ -14,9 +16,10 @@ class BitcoinExchange
 	private:
 		std::map<std::string, double>	_data;
 
-		void	loadDatabase(const std::string& dbPath);
-		bool	isValidDate(const std::string& date) const;
-		bool	isValidValue(const std::string& valueStr, double& value) const;
-		double	getEchangeRate(const std::string& date) const;
+		void		loadDatabase(const std::string& dbPath);
+		bool		isValidDate(const std::string& date) const;
+		bool		isValidValue(const std::string& valueStr, double& value) const;
+		double		getExchangeRate(const std::string& date) const;
+		std::string trim(const std::string& str) const;
 		
 };
