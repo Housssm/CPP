@@ -4,14 +4,12 @@ int main (int ac , char **av)
 {
 	if( ac != 2)
 	{
-		std::cerr << "Error : need 2 arguments." << std::endl;
+		std::cerr << "Error : could not open file." << std::endl;
 		return 1;
-	}
-	
-	BitcoinExchange btc;
-	
+	}	
 	try
 	{
+		BitcoinExchange btc;
 		btc.processInputFile(av[1]);
 	}
 	catch (std::exception& e)
