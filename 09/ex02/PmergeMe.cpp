@@ -318,7 +318,7 @@ void PmergeMe::run(int argc, char **argv)
 	std::clock_t endDeq = std::clock();
 	double timeDeq = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC * 1000000.0;
 
-	std::cout << "After: ";
+	std::cout << "After:";
 	for (size_t i = 0; i < _vec.size(); ++i)
 		std::cout << " " << _vec[i];
 	std::cout << std::endl;

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cctype>
 #include <cstdlib>
+#include <stdexcept>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -52,7 +53,7 @@ void	BitcoinExchange::processInputFile(const std::string& filename) const
 		if (isFirstLine)
 		{
 			isFirstLine = false;
-			if (trim(line) == "data | value")
+			if (trim(line) == "date | value")
 				continue;
 		}
 
@@ -189,6 +190,6 @@ double	BitcoinExchange::getExchangeRate(const std::string& date) const
 		btcValue = itlow->second;
 	}
 	else
-		std::cout << "Error: on data for => " << date << std::endl;
+		std::cout << "Error: no data for => " << date << std::endl;
 	return btcValue;
 }
